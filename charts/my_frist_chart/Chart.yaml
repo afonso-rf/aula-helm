@@ -1,0 +1,11 @@
+apiVersion: v2
+name: chart
+description: My Frist Chart
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.16.0"
+
+icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfubKprRP42G-VtIZNLA90RjQZrPQYEqlHPg&usqp=CAU

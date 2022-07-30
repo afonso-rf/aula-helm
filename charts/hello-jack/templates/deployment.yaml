@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "aula-week3.fullname" . }}
+  name: {{ include "hello-jack.fullname" . }}
   labels:
-    {{- include "aula-week3.labels" . | nindent 4 }}
+    {{- include "hello-jack.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "aula-week3.selectorLabels" . | nindent 6 }}
+      {{- include "hello-jack.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.pod.annotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "aula-week3.selectorLabels" . | nindent 8 }}
+        {{- include "hello-jack.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.pod.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "aula-week3.serviceAccountName" . }}
+      serviceAccountName: {{ include "hello-jack.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.pod.securityContext | nindent 8 }}
       

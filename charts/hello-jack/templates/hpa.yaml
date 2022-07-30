@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "aula-week3.fullname" . }}
+  name: {{ include "hello-jack.fullname" . }}
   labels:
-    {{- include "aula-week3.labels" . | nindent 4 }}
+    {{- include "hello-jack.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "aula-week3.fullname" . }}
+    name: {{ include "hello-jack.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

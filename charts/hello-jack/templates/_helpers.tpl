@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "aula-week3.name" -}}
+{{- define "hello-jack.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "aula-week3.fullname" -}}
+{{- define "hello-jack.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "aula-week3.chart" -}}
+{{- define "hello-jack.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "aula-week3.labels" -}}
-helm.sh/chart: {{ include "aula-week3.chart" . }}
-{{ include "aula-week3.selectorLabels" . }}
+{{- define "hello-jack.labels" -}}
+helm.sh/chart: {{ include "hello-jack.chart" . }}
+{{ include "hello-jack.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "aula-week3.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "aula-week3.name" . }}
+{{- define "hello-jack.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "hello-jack.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "aula-week3.serviceAccountName" -}}
+{{- define "hello-jack.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "aula-week3.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "hello-jack.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

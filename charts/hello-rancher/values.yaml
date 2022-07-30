@@ -25,7 +25,7 @@ pod:
   affinity: {}
 
 image:
-    repository: afonsorf/hello-rancher
+    repository: peteindockerhub/hello-rancher
     tag: ""
     pullPolicy: IfNotPresent
   

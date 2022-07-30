@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hello-jack.fullname" . }}
+  name: {{ include "hello-rancher.fullname" . }}
   labels:
-    {{- include "hello-jack.labels" . | nindent 4 }}
+    {{- include "hello-rancher.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "hello-jack.selectorLabels" . | nindent 6 }}
+      {{- include "hello-rancher.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.pod.annotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "hello-jack.selectorLabels" . | nindent 8 }}
+        {{- include "hello-rancher.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.pod.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "hello-jack.serviceAccountName" . }}
+      serviceAccountName: {{ include "hello-rancher.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.pod.securityContext | nindent 8 }}
       
